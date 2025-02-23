@@ -1,10 +1,11 @@
 import streamlit as st
-from gemini_api import GeminiAI  # Asegúrate de importar la librería correcta para la API de Gemini
+from google import genai
 
-# Inicialización de la API de Gemini con la API key
-api_key = 'TU_API_KEY_DE_GEMINI_AQUI'
-gemini = GeminiAI(api_key)
-
+client = genai.Client(api_key="AIzaSyB0sL_VTcv855pWfWuzcF86YJ_CHZl2Dh8")
+response = client.models.generate_content(
+    model="gemini-2.0-flash", contents="Explain how AI works"
+)
+print(response.text)
 # Título y Descripción
 st.title('Alemán Fácil AI')
 st.write('Bienvenido a Alemán Fácil AI, la aplicación que utiliza inteligencia artificial para ayudarte a aprender alemán de manera dinámica y personalizada.')
